@@ -3,25 +3,47 @@ Pipeline de Engenharia de Dados e Analytics usando Python, SQL e KNIME
 
 # 🚢 Titanic End-to-End Data Pipeline
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-Data_Warehouse-003B57?logo=sqlite&logoColor=white)
-![SQL](https://img.shields.io/badge/Skill-Window_Functions-orange)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![SQLite](https://img.shields.io/badge/SQLite-Data_Warehouse-003B57)
 ![KNIME](https://img.shields.io/badge/Tool-KNIME_Analytics-yellow)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 📋 Executive Summary
-This project goes beyond the standard Titanic competition analysis. Instead of just training a model, I simulated a real-world **Corporate Data Pipeline**. 
+This project simulates a real-world **Corporate Data Pipeline**. 
+Instead of just training a model, I built a complete flow: **ETL (Python) -> Data Warehouse (SQLite) -> Analytics (SQL/KNIME)**.
 
-The goal was to demonstrate **Data Engineering** and **Analytics Engineering** capabilities by taking raw data, processing it through an ETL pipeline using Python, storing it in a centralized Data Warehouse (SQLite), and creating Business Intelligence layers using SQL and KNIME.
+## 🏗️ Architecture
+The project follows a "Bronze to Gold" layer architecture:
 
-## 🏗️ Architecture & Workflow
+1.  **Extract & Transform (Python):** * Cleaning raw CSV data.
+    * Imputing missing ages based on social titles.
+    * Feature Engineering (`IsMarried`, `FamilySize`).
+2.  **Load (SQLite):** * Centralizing data in a `project_db.sqlite` Data Warehouse.
+3.  **Analytics (SQL & KNIME):** * Window Functions for price analysis.
+    * Automated dashboarding for business reporting.
 
-The pipeline follows a "Bronze to Gold" layer architecture pattern:
+---
 
-```mermaid
-graph LR```
-    A[Raw CSV] -->|Extract & Transform| B(Python ETL Engine)
-    B -->|Load| C{SQLite Data Warehouse}
-    C -->|SQL Window Functions| D[Analytics Layer]
-    C -->|Low-Code Workflow| E[KNIME Dashboard]
-    D -->|Reporting| F[Business Insights]
+## 📊 Key Business Insights
+
+1.  **The "Marriage" Factor:**
+    * Married women (`Mrs`) had a **79% survival rate**, compared to 71% for single women (`Miss`).
+2.  **Survival by "Clan":**
+    * Large families in 3rd class had near 0% survival rate due to evacuation difficulties.
+3.  **Fare Anomalies:**
+    * Passengers paying >1.5x the class average had priority access to lifeboats.
+
+## 📂 Repository Structure
+
+* `notebooks/`: Python ETL Code (Jupyter/Colab).
+* `data/`: Raw and Processed data (SQLite).
+* `sql_queries/`: SQL scripts for Analysis.
+* `knime_workflow/`: Low-code analytics files.
+
+## 🚀 How to Run
+1.  Open `notebooks/01_etl_pipeline.ipynb` to generate the database.
+2.  Use a SQLite client to run queries from `sql_queries/`.
+3.  Import `knime_workflow/` into KNIME to view the dashboard.
+
+---
+*Author: Renato Benevenuto*
