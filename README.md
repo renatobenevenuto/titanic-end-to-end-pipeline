@@ -18,7 +18,7 @@ The goal was to demonstrate **Data Engineering** and **Analytics Engineering** c
 
 The pipeline follows a "Bronze to Gold" layer architecture pattern:
 
-```mermaid
+``mermaid
 graph LR
     A[Raw CSV] -->|Extract & Transform| B(Python ETL Engine)
     B -->|Load| C{SQLite Data Warehouse}
